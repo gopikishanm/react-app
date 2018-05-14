@@ -1,27 +1,10 @@
 import React, { Component } from 'react';
+import routes from './routes';
 import './App.css';
 import {
   Link,
   Route
 } from 'react-router-dom';
-
-const Home = () => (
-  <div>
-    <h2>Home</h2>
-  </div>
-)
-
-const First = () => (
-  <div>
-    <h2>First</h2>
-  </div>
-)
-
-const Second = () => (
-  <div>
-    <h2>Second</h2>
-  </div>
-)
 
 class App extends Component {
   render() {
@@ -30,19 +13,17 @@ class App extends Component {
         <br/>
         <h3>React Examples</h3>
         <br/>
-        <div>
         <nav className="navbar navbar-expand-sm bg-light">
           <ul className="nav navbar-nav">
-            <li class="nav-item"><Link to="/" class="nav-link">Home</Link></li>
-            <li class="nav-item"><Link to="/first" class="nav-link">First</Link></li>
-            <li class="nav-item"><Link to="/second" class="nav-link">Second</Link></li>
-
+          {routes.map(function({path,DisplayText}, index){
+                    return <li key={ index }><Link to={path} class="nav-link">{DisplayText}</Link></li>;
+                  })}
           </ul>
          </nav>
-           <Route path="/" component={Home}/>
-           <Route path="/first" component={First}/>
-           <Route path="/second" component={Second}/>
-
+        <div>
+        {routes.map(function({path,component}, index){
+                    return <Route path={path} component={component}/>;
+                  })}
       </div>
   <br/>
         </div>
