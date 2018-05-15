@@ -16,13 +16,13 @@ class App extends Component {
         <nav className="navbar navbar-expand-sm bg-light">
           <ul className="nav navbar-nav">
           {routes.map(function({path,DisplayText}, index){
-                    return <li key={ index }><Link to={path} class="nav-link">{DisplayText}</Link></li>;
+                    return <li key={index}><Link to={path} className="nav-link">{DisplayText}</Link></li>;
                   })}
           </ul>
          </nav>
         <div>
         {routes.map(function({path,component}, index){
-                    return <Route path={path} component={component}/>;
+                    return <Route key={index} path={path} component={component}/>;
                   })}
       </div>
   <br/>
